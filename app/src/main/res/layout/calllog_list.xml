@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:layout_marginRight="10dp"
+    >
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/userprofile"
+        android:id="@+id/imageView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mobile"
+        android:textSize="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/mobile_calllog_list"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="10dp"
+        android:id="@+id/date_calllog_list"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/mobile_calllog_list"
+        android:layout_alignStart="@+id/mobile_calllog_list" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="duration"
+        android:textSize="10dp"
+        android:id="@+id/duration_calllog_list"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call Type"
+        android:textSize="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/callTytpe_calllog_list"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
+
+
+</RelativeLayout>
+
+</LinearLayout>

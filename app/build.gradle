@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         generatedDensities = []
+        multiDexEnabled true
     }
     aaptOptions {
         additionalParameters "--no-version-vectors"
@@ -26,7 +27,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    compile 'com.android.support:design:24.1.1'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
     compile 'com.android.volley:volley:1.0.0'
+    compile 'com.android.support:support-v4:24.2.1'
 }

@@ -121,7 +121,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/login"
+                android:id="@+id/presentlocation"
                 android:text="Register"
                 android:textColor="#FFFFFFFF"
                 android:textSize="12sp"
@@ -242,8 +242,8 @@
         android:textColor="#fff"
         android:layout_marginBottom="76dp"
         android:layout_above="@+id/name"
-        android:layout_alignLeft="@+id/login"
-        android:layout_alignStart="@+id/login"
+        android:layout_alignLeft="@+id/presentlocation"
+        android:layout_alignStart="@+id/presentlocation"
         android:layout_gravity="center_horizontal|top" />
     <!--  Circular  image in top-->
 
