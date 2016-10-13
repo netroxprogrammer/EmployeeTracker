@@ -16,4 +16,14 @@ public class Options extends AppCompatActivity {
         Intent intent = new Intent(Options.this,CallHistory.class);
         startActivity(intent);
     }
+    public  void playCalls(View  v){
+        Intent intent = new Intent(Options.this,PlayCallLogs.class);
+        startActivity(intent);
+
+    }
+    public void getLocation(View  v){
+        Intent intent = new Intent(Options.this, CurrentLocation.class);
+        startActivity(intent);
+
+    }
 }

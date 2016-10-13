@@ -6,6 +6,7 @@ package netroxtech.com.employeetracker.utils;
 public class Constants {
 
 
+    public static final String MYLOGS = "employeeTracking";
     /*
     Share Preferance Values
      */

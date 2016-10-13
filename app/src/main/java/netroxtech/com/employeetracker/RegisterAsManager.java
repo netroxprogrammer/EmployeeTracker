@@ -28,7 +28,7 @@ import netroxtech.com.employeetracker.utils.Constants;
 
 public class RegisterAsManager extends AppCompatActivity {
    JSONObject reader;
-    String role = "as";
+    String role = "employee";
     EditText name, userName,password,cofirmpass,email,mobile, employeeName, employeeMobile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
