@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import netroxtech.com.employeetracker.Models.Users;
 import netroxtech.com.employeetracker.applications.VolleyInitilizer;
 import netroxtech.com.employeetracker.utils.Constants;
 import netroxtech.com.employeetracker.utils.InitilizeSharePref;
@@ -53,11 +54,15 @@ public class LoginManager extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
+                    Users  users = new Users();
                     reader = new JSONObject(response);
                     JSONObject  data = reader.getJSONObject("employee");
                     String  status = data.getString("success");
                     String  role = data.getString("role");
-                    new InitilizeSharePref(LoginManager.this).saveUserData(role);
+                    users.setRole(role);
+                    users.setUserName(userName.getText().toString());
+
+                    new InitilizeSharePref(LoginManager.this).saveUserLogin(users);
                     if(status.equalsIgnoreCase("1") && role.equalsIgnoreCase("manager")){
                         Intent intent = new Intent(LoginManager.this,Options.class);
                         startActivity(intent);

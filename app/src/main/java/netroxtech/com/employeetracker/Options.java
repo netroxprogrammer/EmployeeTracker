@@ -26,4 +26,15 @@ public class Options extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void getLocationHistory(View  v){
+        Intent intent = new Intent(Options.this, LocationHistory.class);
+        startActivity(intent);
+
+    }
+    public void getTotalDistacbne(View  v){
+        Intent intent = new Intent(Options.this, TotalDistance.class);
+        startActivity(intent);
+
+    }
+
 }

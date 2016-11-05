@@ -24,6 +24,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import netroxtech.com.employeetracker.Models.Users;
 import netroxtech.com.employeetracker.applications.VolleyInitilizer;
 import netroxtech.com.employeetracker.utils.Constants;
 import netroxtech.com.employeetracker.utils.InitilizeSharePref;
@@ -38,7 +39,15 @@ EditText name,  password,employeeName, employeeMobile;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         registerasManger = (Button)findViewById(R.id.regiserasManager_main_activity);
-        setXml();
+        boolean isLogin = new InitilizeSharePref(MainActivity.this).isUserLogin();
+        if(isLogin){
+            Intent  intent = new Intent(MainActivity.this,Options.class);
+            startActivity(intent);
+            finish();
+        }
+        else{
+            setXml();
+        }
  }
     public void setXml(){
         name =  (EditText)findViewById(R.id.name_activity_main);
@@ -64,11 +73,16 @@ EditText name,  password,employeeName, employeeMobile;
             @Override
             public void onResponse(String response) {
                 try {
+                    Users users = new Users();
                     reader = new JSONObject(response);
                     JSONObject  data = reader.getJSONObject("employee");
                     String  status = data.getString("success");
                     String  role = data.getString("role");
-                   new InitilizeSharePref(MainActivity.this).saveUserData(role);
+                    users.setRole(role);
+                    users.setUserName(name.getText().toString());
+
+
+                    new InitilizeSharePref(MainActivity.this).saveUserLogin(users);
                     if(status.equalsIgnoreCase("1") && role.equalsIgnoreCase("employee")){
                         Intent intent = new Intent(MainActivity.this,Options.class);
                         startActivity(intent);

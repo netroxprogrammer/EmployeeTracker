@@ -15,7 +15,16 @@ public class Constants {
     public static final String NAMEPREF = "name";
     public static final String MOBILEPREF = "mobile";
     public static final String  EMAILPREF= "email";
-    public static final String  ROLEPREF= "email";
+    public static final String  ROLEPREF= "role";
+    public static final String  LONGITUDEPREF= "longitude";
+    public static final String  LATITUDEPREF= "latitude";
+    public static final String  CURENTTIMEEPREF= "time";
+    public static final String  OFFICELATITUDEPREF= "officelatitude";
+    public static final String  OFFICELONGITUDEPREF= "officelongitude";
+    public static final String  USERNAMEPREF= "userNaame";
+
+
+
     /*
       URL VAlues
      */

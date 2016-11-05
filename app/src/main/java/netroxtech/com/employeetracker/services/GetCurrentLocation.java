@@ -16,6 +16,12 @@ import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import java.util.Date;
+
+import netroxtech.com.employeetracker.Models.Locations;
+import netroxtech.com.employeetracker.utils.Constants;
+import netroxtech.com.employeetracker.utils.InitilizeSharePref;
+
 /**
  * Created by mac on 10/11/2016.
  */
@@ -46,18 +52,18 @@ public class GetCurrentLocation  extends Service implements LocationListener {
     protected LocationManager locationManager;
 
     public GetCurrentLocation(Context context) {
+
         this.mContext = context;
         getLocation();
     }
 
     public Location getLocation() {
-
+        Locations locations = new Locations();
         try {
 
             if ( Build.VERSION.SDK_INT >= 23 &&
                     ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                     ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
             }
             locationManager = (LocationManager) mContext
                     .getSystemService(LOCATION_SERVICE);
@@ -87,6 +93,13 @@ public class GetCurrentLocation  extends Service implements LocationListener {
                         if (location != null) {
                             latitude = location.getLatitude();
                             longitude = location.getLongitude();
+
+                            locations.setLatitude(String.valueOf(latitude));
+                            locations.setLongitude(String.valueOf(longitude));
+                            locations.setLongitude(String.valueOf(new Date().getTime()));
+                            new InitilizeSharePref(mContext).saveLocation(locations);
+                            Log.v(Constants.MYLOGS," Longitue "+ longitude);
+                            Log.v(Constants.MYLOGS," Latitude "+ latitude);
                         }
                     }
                 }
@@ -104,6 +117,12 @@ public class GetCurrentLocation  extends Service implements LocationListener {
                             if (location != null) {
                                 latitude = location.getLatitude();
                                 longitude = location.getLongitude();
+                                Log.v(Constants.MYLOGS," Longitue "+ longitude);
+                                Log.v(Constants.MYLOGS," Latitude "+ latitude);
+                                locations.setLatitude(String.valueOf(latitude));
+                                locations.setLongitude(String.valueOf(longitude));
+                                locations.setLongitude(String.valueOf(new Date().getTime()));
+                                new InitilizeSharePref(mContext).saveLocation(locations);
                             }
                         }
                     }

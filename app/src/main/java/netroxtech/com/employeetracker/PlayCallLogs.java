@@ -1,13 +1,18 @@
 package netroxtech.com.employeetracker;
 
+import android.media.MediaPlayer;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +21,7 @@ import netroxtech.com.employeetracker.Models.PlayCalls;
 import netroxtech.com.employeetracker.adapters.PlayCallAdapters;
 import netroxtech.com.employeetracker.utils.Constants;
 
-public class PlayCallLogs extends AppCompatActivity {
+public class PlayCallLogs extends AppCompatActivity implements  MediaPlayer.OnCompletionListener {
     ListView listView;
     List<PlayCalls> playCallsList;
     @Override
@@ -29,6 +34,22 @@ public class PlayCallLogs extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.activity_play_call_listView);
         playCallsList = new ArrayList<>();
         getListOfFiles();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView data = (TextView) view.findViewById(R.id.play_call_logs_path_text);
+                String path = data.getText().toString();
+                try {
+                    MediaPlayer mediaPlayer = new MediaPlayer();
+                    mediaPlayer.setDataSource(path);
+                    mediaPlayer.prepare();
+                    mediaPlayer.start();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void getListOfFiles() {
@@ -56,5 +77,11 @@ public class PlayCallLogs extends AppCompatActivity {
         }
         ListAdapter adapter = new PlayCallAdapters(PlayCallLogs.this,playCallsList);
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mediaPlayer) {
+        mediaPlayer.stop();
+        mediaPlayer.release();
     }
 }

@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/loginbutton"
         android:shadowColor="#A8A8A8"
-        android:onClick="addManager"
+        android:onClick="getLocationHistory"
         android:layout_below="@+id/presentlocation"
         android:layout_alignLeft="@+id/presentlocation"
         android:layout_alignStart="@+id/presentlocation"
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/loginbutton"
         android:shadowColor="#A8A8A8"
-        android:onClick="addManager"
+        android:onClick="getTotalDistacbne"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="36dp" />

@@ -1,35 +1,42 @@
 package netroxtech.com.employeetracker;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import netroxtech.com.employeetracker.services.GetCurrentLocation;
+import netroxtech.com.employeetracker.utils.Constants;
+import netroxtech.com.employeetracker.utils.InitilizeSharePref;
 
-public class CurrentLocation extends FragmentActivity implements OnMapReadyCallback {
+public class TotalDistanceMap extends FragmentActivity implements OnMapReadyCallback,OnMarkerDragListener{
     private GoogleMap googleMap;
     double  longitude ;
     double  latitude;
     GetCurrentLocation gps;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current_location);
+        setContentView(R.layout.activity_total_distance_map);
         setXML();
+
     }
+
     public void setXML(){
-        gps = new GetCurrentLocation(CurrentLocation.this);
+        gps = new GetCurrentLocation(TotalDistanceMap.this);
 
         // check if GPS enabled
         if(gps.canGetLocation()){
@@ -62,7 +69,7 @@ public class CurrentLocation extends FragmentActivity implements OnMapReadyCallb
             // check if map is created successfully or not
 
         }
-       else {
+        else {
             Toast.makeText(getApplicationContext(),
                     "Sorry! unable to create maps", Toast.LENGTH_SHORT)
                     .show();
@@ -84,12 +91,35 @@ public class CurrentLocation extends FragmentActivity implements OnMapReadyCallb
         map.setIndoorEnabled(true);
         map.setBuildingsEnabled(true);
         map.getUiSettings().setZoomControlsEnabled(true);
-        MarkerOptions  marker = new MarkerOptions().position(new LatLng(latitude,longitude)).title("Muy Location");
+        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("Muy Location").draggable(true);
         map.addMarker(marker);
         CameraPosition cameraPosition = new CameraPosition.Builder().target(
                 new LatLng(latitude, longitude)).zoom(12).build();
 
         map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        map.setOnMarkerDragListener(TotalDistanceMap.this);
+    }
+
+    @Override
+    public void onMarkerDragStart(Marker marker) {
 
     }
+
+    @Override
+    public void onMarkerDrag(Marker marker) {
+
+    }
+
+    @Override
+    public void onMarkerDragEnd(Marker marker) {
+        InitilizeSharePref  initilizeSharePref = new InitilizeSharePref(TotalDistanceMap.this);
+       double latitude =  marker.getPosition().latitude;
+       double longitude = marker.getPosition().longitude;
+        initilizeSharePref.removeData(Constants.OFFICELATITUDEPREF);
+        initilizeSharePref.removeData(Constants.OFFICELONGITUDEPREF);
+       initilizeSharePref.saveDistance(String.valueOf(latitude), String.valueOf(longitude));
+
+        Log.v(Constants.MYLOGS, String.valueOf(latitude));
+    }
 }
+

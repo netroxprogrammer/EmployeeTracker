@@ -58,7 +58,14 @@
 
         <activity android:name=".CurrentLocation" />
         .
-
+        <activity android:name=".LocationHistory" />
+        <activity
+            android:name=".TotalDistance"
+            android:label="@string/title_activity_total_distance"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".TotalDistanceMap" />
+        <activity android:name=".Setting" />
+        <activity android:name=".AdvanceSetting"></activity>
     </application>
 
 </manifest>
