@@ -3,8 +3,13 @@ package netroxtech.com.employeetracker.utils;
 import android.app.Application;
 import android.content.Context;
 import android.database.Cursor;
+import android.os.Environment;
 import android.provider.CallLog;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
@@ -57,6 +62,38 @@ public class ApplicationFunctions {
 
         }
         return  calls;
+    }
+
+    /**
+     * Get SDCARD Address
+     * @return
+     */
+    public String getExternalAddress(){
+        String address = Environment.getExternalStorageDirectory().toString();
+        return address;
+    }
+
+    /**
+     * Get Internal Storage Data
+     * @return
+     */
+
+    public String getInternalAddress(){
+        String address= Environment.getDataDirectory().toString();
+        return address;
+    }
+    public void transferFiles(String extension) throws IOException{
+        File file  = new File(getExternalAddress()+"/");
+        File[]  files = file.listFiles();
+        for(File  f : files){
+            String filePath = f.getPath();
+            if(filePath.endsWith(extension)){
+                BufferedInputStream bufferedInputStream = null;
+                File  sendFile   = new File(filePath);
+                bufferedInputStream = new BufferedInputStream(new FileInputStream(sendFile),8192);
+                
+            }
+        }
     }
 
 }

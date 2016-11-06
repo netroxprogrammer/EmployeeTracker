@@ -41,7 +41,7 @@
     <EditText
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:id="@+id/activity_setting_hostAddress"
+        android:id="@+id/activity_advanceSetting_hostAddress"
         android:layout_toEndOf="@+id/activity_advanceSetting_IP"
         android:layout_toRightOf="@+id/activity_advanceSetting_IP"
         />
@@ -64,7 +64,7 @@
         <EditText
             android:layout_width="120dp"
             android:layout_height="40dp"
-            android:id="@+id/activity_setting_portAddress"
+            android:id="@+id/activity_advanceSetting_portAddress"
             android:layout_toEndOf="@+id/activity_advanceSetting_port"
             android:layout_toRightOf="@+id/activity_advanceSetting_port"
             />
@@ -87,7 +87,7 @@
         <EditText
             android:layout_width="120dp"
             android:layout_height="40dp"
-            android:id="@+id/activity_setting_userName"
+            android:id="@+id/activity_advanceSetting_ftpUserName"
             android:layout_toEndOf="@+id/activity_advanceSetting_uName"
             android:layout_toRightOf="@+id/activity_advanceSetting_uName"
             />
@@ -112,7 +112,7 @@
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:inputType="textPassword"
-            android:id="@+id/activity_setting_password"
+            android:id="@+id/activity_advanceSetting_ftpPassword"
             android:layout_toEndOf="@+id/activity_advanceSetting_pass"
             android:layout_toRightOf="@+id/activity_advanceSetting_pass"
             />
@@ -139,7 +139,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/password_layout"
         android:background="@drawable/loginbutton"
-
+        android:onClick="saveFTPSeting"
         />
 
 

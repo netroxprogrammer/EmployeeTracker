@@ -39,15 +39,16 @@
         android:id="@+id/activity_setting_shareemail"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/activity_setting_smsLog"
-        android:background="@drawable/loginbutton"
+        android:background="@drawable/buttonshap"
         />
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Example@gmail.com"
-        android:textSize="20dp"
+        android:hint="Example@gmail.com"
+        android:textSize="15dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/activity_setting_sharetext"
         android:layout_below="@id/activity_setting_shareemail"
 
@@ -80,6 +81,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/activity_setting_autoSwitch"
         android:background="@drawable/loginbutton"
+        android:onClick="SaveSettingButtton"
         />
     <Button
         android:layout_marginTop="10dp"
@@ -90,7 +92,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/activity_setting_saveButton"
         android:background="@drawable/loginbutton"
-
+        android:onClick="goToAdvanceSetting"
         />
 
 </RelativeLayout>

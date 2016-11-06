@@ -22,7 +22,11 @@ public class Constants {
     public static final String  OFFICELATITUDEPREF= "officelatitude";
     public static final String  OFFICELONGITUDEPREF= "officelongitude";
     public static final String  USERNAMEPREF= "userNaame";
-
+    public static final String  CALLRECORDPRE = "callrecord";
+    public static final String  CALLLOGSPRE = "calllogs";
+    public static final String  SMSLOGSPRE = "smslogs";
+    public  static final String SHAREEMAILPREF = "sharemail";
+    public  static final String EMAILSHAREPREF = "email";
 
 
     /*
@@ -45,5 +49,14 @@ public class Constants {
     public static final String EMPLOYEENAME = "employeeName";
     public static final String EMPLOYEEMobile = "employeeMobile";
     public static final String ROLE = "role";
+
+    /*
+    FTP Constant Setting
+     */
+    public static final String FTPHOSTADDRESS = "hostAddress";
+    public static final String FTPPORTADDRESS = "portAddress";
+    public static final String FTPUSERNAME = "ftpuserName";
+    public static final String FTPPASSWORD = "ftpPassword";
+
 
 }

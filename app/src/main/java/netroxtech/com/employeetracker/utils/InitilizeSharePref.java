@@ -29,9 +29,9 @@ public class InitilizeSharePref {
         editor.putString(Constants.USERNAMEPREF,users.getUserName());
         editor.commit();
     }
-    public String getUserRole(){
-        String role =  mPref.getString(Constants.ROLEPREF, null);
-        return  role;
+    public String getSingleData(String prefName,String values){
+        String value =  mPref.getString(Constants.ROLEPREF, null);
+        return  value;
     }
     public void saveLocation(Locations locations){
         SharedPreferences.Editor editor = mPref.edit();
@@ -90,4 +90,10 @@ public class InitilizeSharePref {
         locations.setLatitude(latitude);
         return  locations;
     }
+    public  void saveRecordSettings(String prefName,String  value){
+        SharedPreferences.Editor editor =  mPref.edit();
+        editor.putString(prefName, value);
+        editor.commit();
+    }
+
 }
